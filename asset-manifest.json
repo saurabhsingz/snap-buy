@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/snap-buy/static/css/main.36394a02.css",
-    "main.js": "/snap-buy/static/js/main.72dc3e77.js",
-    "static/media/desc.jpg": "/snap-buy/static/media/desc.33f88b74d6d960ccc8d3.jpg",
-    "static/media/ecommerce-web-page-concept-illustration_114360-8204.webp": "/snap-buy/static/media/ecommerce-web-page-concept-illustration_114360-8204.76a26830958609a8858e.webp",
-    "static/media/404-landing-page-free-vector.jpg": "/snap-buy/static/media/404-landing-page-free-vector.93f1576158cdc4fdbfb2.jpg",
-    "index.html": "/snap-buy/index.html",
-    "main.36394a02.css.map": "/snap-buy/static/css/main.36394a02.css.map",
-    "main.72dc3e77.js.map": "/snap-buy/static/js/main.72dc3e77.js.map"
+    "main.css": "/static/css/main.36394a02.css",
+    "main.js": "/static/js/main.51b7a87c.js",
+    "static/media/desc.jpg": "/static/media/desc.33f88b74d6d960ccc8d3.jpg",
+    "static/media/ecommerce-web-page-concept-illustration_114360-8204.webp": "/static/media/ecommerce-web-page-concept-illustration_114360-8204.76a26830958609a8858e.webp",
+    "static/media/404-landing-page-free-vector.jpg": "/static/media/404-landing-page-free-vector.93f1576158cdc4fdbfb2.jpg",
+    "index.html": "/index.html",
+    "main.36394a02.css.map": "/static/css/main.36394a02.css.map",
+    "main.51b7a87c.js.map": "/static/js/main.51b7a87c.js.map"
   },
   "entrypoints": [
     "static/css/main.36394a02.css",
-    "static/js/main.72dc3e77.js"
+    "static/js/main.51b7a87c.js"
   ]
 }
