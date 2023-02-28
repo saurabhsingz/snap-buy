@@ -15,7 +15,7 @@ const About = () => {
       direction="column"
       justifyContent="center"
       alignItems="center"
-      sx={{ mx: 5, my: 5}}
+      sx={{my: 5}}
     >
       <Typography
         variant="h2"
@@ -24,8 +24,8 @@ const About = () => {
       >
         My Project
       </Typography>
-      <img src={logo} width="45%" />
-      <img src={desc} width="65%" />
+      <img src={logo} width="45%" alt="logo"/>
+      <img src={desc} width="65%" alt="desc"/>
       <Button
         onClick={() => {
           openHome();

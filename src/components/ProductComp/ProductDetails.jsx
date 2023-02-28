@@ -34,10 +34,10 @@ const ProductDetails = () => {
   const openCart = (code, title, price, img) => {
     const data = JSON.parse(localStorage.getItem("items"));
     console.log(data);
-    const hasData = data.filter((c) => c.id === code.toString());
+    const hasData = data.filter((c) => c.id === code);
     if (hasData.length === 0) {
       const item = {
-        id: code.toString(),
+        id: code,
         name: title,
         cost: parseInt(price),
         totalCost: parseInt(price),

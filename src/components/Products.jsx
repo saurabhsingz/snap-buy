@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Product from "./ProductComp/Product";
 import { Grid, Box, Container } from "@mui/material";
@@ -17,6 +18,10 @@ const Products = () => {
   const [search, setSearch] = useState(() => {
     return "";
   });
+
+  const [isOnline,setIsOnline] = useState(window.navigator.onLine);
+
+  const navigate = useNavigate()
   const baseURL = "https://fakestoreapi.com/products?limit=20";
 
   const getData = async () => {
@@ -40,6 +45,13 @@ const Products = () => {
     getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setIsOnline(navigator.onLine);
+    if(isOnline===false){
+      navigate("*");
+    }
+  },[isOnline])
 
   const handleChange = (e) => {
     setSearch(e.target.value);

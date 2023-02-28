@@ -1,11 +1,18 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { useNavigate } from "react-router-dom";
 let logo = require("../Images/404-landing-page-free-vector.jpg");
 
 export default function Error() {
+  const [isOnline,setIsOnline] = useState(window.navigator.onLine);
   const Navigate = useNavigate();
+  useEffect(() => {
+    setIsOnline(navigator.onLine);
+    if(isOnline===true){
+      Navigate("/");
+    }
+  },[isOnline])
   const openHome = () => {
     Navigate("/");
   };

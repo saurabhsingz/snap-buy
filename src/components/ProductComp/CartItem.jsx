@@ -5,33 +5,21 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import { useNavigate } from "react-router-dom";
 
 const CartItem = (props) => {
-  // constructor() {
-  //     super();
-  //     this.handleIncrement = this.handleIncrement.bind(this);
-  // }
+  const navigate = useNavigate();
+  const openProduct = (id) => {
+    navigate("/ProductDetails/" + id);
+  };
 
-  // handleIncrement = (id) => { //automatically binds event handler with this
-  //     this.setState({ count: this.state.count + 1 }); // make the update aware to the React
-  //     // console.log('Increment Clicked', this);
-  // };
-
-  // doHandleIncrement = () => {
-  //     this.handleIncrement({ id: this.props.id });
-  // };
-
-  // renderTags() {
-  //     if (this.state.tags.length === 0) return <p>There are no tags!</p>;
-  //     return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>;
-  // }
   return (
     <Grid
       container
       direction="row"
       justifyContent="center"
       alignItems="center"
-      spacing={5}
+      spacing={1}
     >
       <Grid item>
         <img
@@ -42,18 +30,34 @@ const CartItem = (props) => {
         />
       </Grid>
       <Grid item>
-        <Typography variant="h7">{props.counter.name}</Typography>
+        <Button 
+        sx={{color:"black"}}
+        onClick={() => {
+          openProduct(props.counter.id);
+        }}>
+          <Typography variant="h7">{props.counter.name}</Typography>
+        </Button>
       </Grid>
       <Grid item>
-        <IconButton onClick={() => props.onIncrement(props.counter)}>
-          <AddCircleOutlineIcon />
-        </IconButton>
-      </Grid>
-      <Grid item>{props.counter.value}</Grid>
-      <Grid item>
-        <IconButton onClick={() => props.onDecrement(props.counter)}>
-          <RemoveCircleOutlineIcon />
-        </IconButton>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={1}
+        >
+          <Grid item>
+            <IconButton onClick={() => props.onIncrement(props.counter)}>
+              <AddCircleOutlineIcon />
+            </IconButton>
+          </Grid>
+          <Grid item>{props.counter.value}</Grid>
+          <Grid item>
+            <IconButton onClick={() => props.onDecrement(props.counter)}>
+              <RemoveCircleOutlineIcon />
+            </IconButton>
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item>
         <Button
@@ -68,7 +72,7 @@ const CartItem = (props) => {
       </Grid>
       <Grid item>
         <IconButton
-          sx={{color:"#ff6f69"}}
+          sx={{ color: "#ff6f69" }}
           onClick={() => props.onDelete(props.counter.id)}
         >
           <DeleteIcon />
@@ -77,7 +81,9 @@ const CartItem = (props) => {
       <Grid item>
         <IconButton
           sx={{ color: "#54b2a9" }}
-          onClick={() => props.onBuy(props.counter.id)}
+          onClick={() => {
+            props.onBuy(props.counter.id);
+          }}
         >
           <ShoppingCartIcon />
         </IconButton>

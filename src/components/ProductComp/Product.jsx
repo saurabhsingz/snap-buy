@@ -17,6 +17,28 @@ const Product = (props) => {
     navigate("/ProductDetails/" + id);
   };
 
+  const openCart = (code, title, price, img) => {
+    const data = JSON.parse(localStorage.getItem("items"));
+    console.log(data);
+    const hasData = data.filter((c) => c.id === code);
+    if (hasData.length === 0) {
+      const item = {
+        id: code,
+        name: title,
+        cost: parseInt(price),
+        totalCost: parseInt(price),
+        image: img,
+        value: parseInt(1),
+      };
+      data.push(item);
+      localStorage.setItem("items", JSON.stringify(data));
+      navigate("/Cart");
+    } else {
+      alert("Item already existes in cart");
+      navigate("/Cart");
+    }
+  };
+
   const returnDescription = (data) => {
     if(data.length>200){
       return data.substr(0,200)+"...";
@@ -57,13 +79,13 @@ const Product = (props) => {
           <Typography variant="body2" gutterBottom>
             {returnDescription(props.data.description)}
           </Typography>
+          <Button variant="text" size="small" disableRipple>
+              <AttachMoneyIcon />
+              <Typography variant="h6">{props.data.price}</Typography>
+            </Button>
         </CardContent>
         <CardActions>
-          <Box sx={{ flexGrow: 1 }}>
-            <Button variant="text" size="small">
-              <AttachMoneyIcon />
-              {props.data.price}
-            </Button>
+          <Box sx={{ flexGrow: 1}}>
             <Button
               variant="outlined"
               color="success"
@@ -74,6 +96,15 @@ const Product = (props) => {
             
             >
               View
+            </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={() => {
+                openCart(props.data.id,props.data.title,props.data.price,props.data.image);
+              }}            
+            >
+              Add to Cart
             </Button>
           </Box>
         </CardActions>

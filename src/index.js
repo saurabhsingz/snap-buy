@@ -18,6 +18,7 @@ root.render(
       <Route path="/ProductDetails/:id" element={<ProductDetails />} />
       <Route path="/Cart" element={<Cart />} />
       <Route path="/about" element={<About />} />
+      <Route path="/Error" element={<NoPage />} />
       <Route path="*" element={<NoPage />} />
     </Routes>
   </BrowserRouter>

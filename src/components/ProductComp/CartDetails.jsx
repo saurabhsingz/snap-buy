@@ -30,14 +30,22 @@ const CartDetails = () => {
   }, [counter]);
 
   const handleAllBuy = () => {
-    alert("You Succussfully Bought All Items");
-    handleReset();
+    if(counter.length===0){
+      alert("No Items in Your Cart!");
+    }else{
+      alert("You Succussfully Bought All Items");
+      handleReset(); 
+    }
   };
 
   const handleReset = () => {
-    localStorage.clear();
-    localStorage.setItem("items", JSON.stringify([]));
-    setCounter([]);
+    if(counter.length===0){
+      alert("No Items in Your Cart!");
+    }else{
+      localStorage.clear();
+      localStorage.setItem("items", JSON.stringify([]));
+      setCounter([]);
+    }
   };
 
   const handleIncrement = (data) => {
@@ -76,20 +84,13 @@ const CartDetails = () => {
   };
 
   return (
-    <React.Fragment>
-      <Box
-        sx={{
-          flexGrow: 1,
-          justifyContent: "center",
-          display: "flex",
-          my: 1,
-        }}
-      ></Box>
+    <div>
       <Grid
         container
         direction="column"
         justifyContent="space-between"
         alignItems="stretch"
+        sx={{mb:8,pt:5}}
       >
         {counter.map((counter) => (
           <Grid item key={counter.id}>
@@ -100,7 +101,14 @@ const CartDetails = () => {
               onBuy={handleBuy}
               counter={counter}
             />
-            <Divider variant="middle" />
+            <Divider
+              variant="middle"
+              sx={{
+                borderBottomWidth: "3px",
+                marginLeft: "12%",
+                marginRight: "12%",
+              }}
+            />
           </Grid>
         ))}
         <Box
@@ -137,30 +145,40 @@ const CartDetails = () => {
               </Button>
             </Grid>
             <Grid item>
-              <Button
-                size="large"
-                sx={{ bgcolor: "#8874a3" }}
-                variant="contained"
-                onClick={() => handleAllBuy()}
+              <Grid
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                spacing={5}
               >
-                Buy All
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                size="large"
-                variant="contained"
-                sx={{ bgcolor: "#568299" }}
-                onClick={() => handleReset()}
-              >
-                Remove All
-                <RemoveShoppingCartIcon />
-              </Button>
+                <Grid item>
+                  <Button
+                    size="large"
+                    sx={{ bgcolor: "#8874a3" }}
+                    variant="contained"
+                    onClick={() => handleAllBuy()}
+                  >
+                    Buy All
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    size="large"
+                    variant="contained"
+                    sx={{ bgcolor: "#568299" }}
+                    onClick={() => handleReset()}
+                  >
+                    Remove All
+                    <RemoveShoppingCartIcon />
+                  </Button>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Box>
       </Grid>
-    </React.Fragment>
+    </div>
   );
 };
 
